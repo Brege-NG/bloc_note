@@ -30,6 +30,9 @@ class TaskDialogState extends ConsumerState<TaskDialog> {
       title: Column(
         children: [
           const Text("ajoutez une tache ici svp"),
+          const Text("pas trop long svp", style: TextStyle(
+            fontSize: 10.0, color: Colors.red
+          ),),
           const SizedBox(
             height: 5.0,
           ),
