@@ -29,7 +29,7 @@ class TaskDialogState extends ConsumerState<TaskDialog> {
     return  AlertDialog(
       title: Column(
         children: [
-          const Text("ajouter une tache ici"),
+          const Text("ajoutez une tache ici svp"),
           const SizedBox(
             height: 5.0,
           ),
