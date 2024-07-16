@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../main.dart';
+import '../modele/task.dart';
+
+class TaskDialog extends ConsumerStatefulWidget {
+  const TaskDialog({Key? key}) : super(key: key);
+
+  @override
+  ConsumerState<TaskDialog> createState() => TaskDialogState();
+}
+
+class TaskDialogState extends ConsumerState<TaskDialog> {
+  late final TextEditingController taskController;
+
+  @override
+  void initState() {
+    super.initState();
+    taskController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    taskController.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return  AlertDialog(
+      title: Column(
+        children: [
+          const Text("ajouter une tache ici"),
+          const SizedBox(
+            height: 5.0,
+          ),
+          TextField(
+            controller: taskController,
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: const Text("annuler")),
+        TextButton(
+            onPressed: () {
+              ref.read(tasksProvider.notifier).addTask(Task(name: taskController.text, done: false));
+              taskController.clear();
+              Navigator.pop(context);
+            },
+            child: const Text("ajouter")),
+      ],
+    );
+  }
+}
