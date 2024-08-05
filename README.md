@@ -1,6 +1,7 @@
 # app_note
 
 A new Flutter project.
+is a block note app
 
 ## Getting Started
 
